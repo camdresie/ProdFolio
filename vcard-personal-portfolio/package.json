@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/codewithsadee/vcard-personal-portfolio#readme",
   "dependencies": {
+    "@coreui/icons": "^3.0.1",
     "http-server": "^14.1.1"
   }
 }
