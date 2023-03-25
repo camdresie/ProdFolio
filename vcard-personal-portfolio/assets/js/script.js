@@ -5,8 +5,6 @@
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
-
-
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
@@ -26,6 +24,46 @@ const overlay = document.querySelector("[data-overlay]");
 const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Get the modal container and overlay
+  var modalContainer = document.querySelector("[data-modal-container]");
+  var overlay = document.querySelector("[data-overlay]");
+
+  // Get the project tiles
+  var projectTiles = document.querySelectorAll("[data-modal-open]");
+
+  // Get the modal close button
+  var closeModal = document.querySelector("[data-modal-close-btn]");
+
+  // Update the modal content based on the clicked project tile
+  function updateModalContent(project) {
+    var modalTitle = document.querySelector("[data-modal-title]");
+    var modalText = document.querySelector("[data-modal-text]");
+
+    // Update the modal title and text based on the clicked project tile
+    modalTitle.textContent = project.querySelector(".project-title").textContent;
+    modalText.innerHTML = "<p>Project description goes here...</p>";
+  }
+
+  // Open the modal when a project tile is clicked
+  projectTiles.forEach(function(projectTile) {
+    projectTile.addEventListener("click", function() {
+      updateModalContent(projectTile);
+      modalContainer.style.display = "block";
+    });
+  });
+
+  // Close the modal when the close button or overlay is clicked
+  closeModal.addEventListener("click", function() {
+    modalContainer.style.display = "none";
+  });
+  overlay.addEventListener("click", function() {
+    modalContainer.style.display = "none";
+  });
+});
+
 
 // modal toggle function
 const testimonialsModalFunc = function () {
